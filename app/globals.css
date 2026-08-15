@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #f5e6c8;
+  --parchment: #f0e0b8;
+  --ink: #2a2118;
+  --egg-yellow: #f5c542;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--ink);
+  font-family: "Press Start 2P", cursive;
+  -webkit-font-smoothing: none;
+  image-rendering: pixelated;
+}
+
+.paper-bg {
+  background-color: #f5e6c8;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(232, 168, 56, 0.06) 0 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, rgba(42, 33, 24, 0.04) 0 1px, transparent 1px),
+    radial-gradient(circle at 40% 80%, rgba(232, 168, 56, 0.05) 0 1px, transparent 1px);
+  background-size: 24px 24px, 32px 32px, 18px 18px;
+}
+
+:focus-visible {
+  outline: 3px solid #e8a838;
+  outline-offset: 3px;
+}
+
+.btn-pixel {
+  font-family: "Press Start 2P", cursive;
+  border: 3px solid #2a2118;
+  background: #f5e6c8;
+  color: #2a2118;
+  box-shadow: 3px 3px 0 0 #2a2118;
+  cursor: pointer;
+  transition:
+    transform 80ms steps(2),
+    box-shadow 80ms steps(2),
+    background-color 120ms;
+  user-select: none;
+}
+
+.btn-pixel:hover {
+  background: #f5c542;
+  transform: translateY(-2px);
+  box-shadow: 4px 5px 0 0 #2a2118;
+}
+
+.btn-pixel:active {
+  transform: translateY(2px);
+  box-shadow: 1px 1px 0 0 #2a2118;
+}
+
+.btn-pixel-primary {
+  background: #f5c542;
+}
+
+.btn-pixel-primary:hover {
+  background: #e8a838;
+}
+
+.card-pixel {
+  border: 3px solid #2a2118;
+  background: #faf3e0;
+  box-shadow: 4px 4px 0 0 #2a2118;
+  transition:
+    transform 100ms steps(2),
+    box-shadow 100ms steps(2),
+    background-color 120ms;
+  cursor: pointer;
+  user-select: none;
+}
+
+.card-pixel:hover {
+  transform: translateY(-3px);
+  box-shadow: 6px 7px 0 0 #2a2118;
+  background: #fff4c4;
+}
+
+.card-pixel:active,
+.card-pixel.pressed {
+  transform: translateY(2px);
+  box-shadow: 1px 1px 0 0 #2a2118;
+  background: #f5c542;
+}
+
+.frame {
+  position: relative;
+  border: 3px solid #2a2118;
+  box-shadow: 6px 6px 0 0 rgba(42, 33, 24, 0.15);
+  background: #faf3e0;
+}
+
+.frame::before,
+.frame::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #2a2118;
+  pointer-events: none;
+}
+
+.frame::before {
+  top: 6px;
+  left: 6px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.frame::after {
+  bottom: 6px;
+  right: 6px;
+  border-left: none;
+  border-top: none;
+}
+
+.timer-digits {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-shadow: 3px 3px 0 rgba(42, 33, 24, 0.12);
+}
+
+.pixel-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #2a2118;
+}
+
+.pixel-divider::before,
+.pixel-divider::after {
+  content: "";
+  height: 2px;
+  width: 48px;
+  background: #2a2118;
+}
+
+.sparkle {
+  display: inline-block;
+  color: #e8a838;
+  animation: sparkle 1.2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.35;
+    transform: scale(0.75);
+  }
+}
+
+.screen-fade {
+  animation: fadeIn 0.22s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 640px) {
+  .pixel-divider::before,
+  .pixel-divider::after {
+    width: 80px;
+  }
+}
