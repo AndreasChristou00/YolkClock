@@ -20,7 +20,7 @@ export default function HomeScreen({ onSelect }: HomeScreenProps) {
             </span>
 
             <h1 className="text-base tracking-wide text-ink sm:text-2xl md:text-3xl">
-              EGG TIMER
+              YOLK CLOCK 
             </h1>
 
             <span className="text-egg-gold text-[10px] sm:text-xs" aria-hidden>

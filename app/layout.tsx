@@ -10,9 +10,9 @@ const pressStart = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  title: "Pixel Egg Timer",
+  title: "Yolk Clock",
   description:
-    "A cozy retro 8-bit egg timer. Choose soft, jammy, medium, or hard — and wait for the ding.",
+    "A cozy retro egg timer. Choose soft, jammy, medium, or hard and wait for the ding.",
 };
 
 export const viewport: Viewport = {
