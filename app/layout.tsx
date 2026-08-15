@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   title: "Yolk Clock",
   description:
     "A cozy retro egg timer. Choose soft, jammy, medium, or hard and wait for the ding.",
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export const viewport: Viewport = {
