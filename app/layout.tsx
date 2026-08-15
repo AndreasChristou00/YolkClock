@@ -10,13 +10,38 @@ const pressStart = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  title: "Yolk Clock",
+  metadataBase: new URL("https://yolkclock.andreaschristou.eu"),
+
+  title: "Yolk Clock | Simple Egg Timer",
+
   description:
-    "A cozy retro egg timer. Choose soft, jammy, medium, or hard and wait for the ding.",
+    "A simple retro egg timer for perfectly cooked eggs. Choose soft, jammy, medium, or hard and start the timer.",
+
+  alternates: {
+    canonical: "/",
+  },
+
   manifest: "/manifest.webmanifest",
+
   icons: {
     icon: "/icon.png",
     apple: "/icon.png",
+  },
+
+  openGraph: {
+    title: "Yolk Clock | Simple Egg Timer",
+    description:
+      "A simple retro egg timer for perfectly cooked eggs. Choose soft, jammy, medium, or hard.",
+    url: "https://yolkclock.andreaschristou.eu",
+    siteName: "Yolk Clock",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary",
+    title: "Yolk Clock | Simple Egg Timer",
+    description:
+      "A simple retro egg timer for perfectly cooked eggs. Choose soft, jammy, medium, or hard.",
   },
 };
 
