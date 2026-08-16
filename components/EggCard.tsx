@@ -9,6 +9,13 @@ type EggCardProps = {
   onSelect: (egg: EggConfig) => void;
 };
 
+const tabClassByEgg: Record<EggConfig["id"], string> = {
+  soft: "egg-tab-soft",
+  jammy: "egg-tab-jammy",
+  medium: "egg-tab-medium",
+  hard: "egg-tab-hard",
+};
+
 export default function EggCard({ egg, onSelect }: EggCardProps) {
   const [pressed, setPressed] = useState(false);
 
@@ -24,22 +31,39 @@ export default function EggCard({ egg, onSelect }: EggCardProps) {
   return (
     <button
       type="button"
-      className={`card-pixel flex w-full max-w-[140px] flex-col items-center gap-2 px-3 py-4 sm:max-w-[150px] sm:px-4 sm:py-5 ${
+      className={`card-pixel group flex w-full flex-col overflow-hidden ${
         pressed ? "pressed" : ""
       }`}
       onClick={handleActivate}
       aria-label={`Start ${egg.name} egg timer, ${egg.label}`}
     >
-      <PixelEgg type={egg.id} size={72} className="sm:hidden" />
-      <PixelEgg type={egg.id} size={88} className="hidden sm:block" />
+      <div
+        className={`w-full border-b-[3px] border-ink px-3 py-3 text-center ${tabClassByEgg[egg.id]}`}
+      >
+        <span className="text-[10px] tracking-[0.12em] text-ink sm:text-[11px]">
+          {egg.name}
+        </span>
+      </div>
 
-      <span className="mt-1 text-[10px] leading-none tracking-wide text-ink sm:text-xs">
-        {egg.name}
-      </span>
+      <div className="flex min-h-[210px] w-full flex-col items-center justify-center px-4 py-6 sm:min-h-[240px]">
+        <div className="transition-transform duration-150 group-hover:-translate-y-1">
+          <PixelEgg
+            type={egg.id}
+            size={100}
+            className="sm:hidden"
+          />
 
-      <span className="text-[9px] leading-none text-ink-soft sm:text-[10px]">
-        {egg.label}
-      </span>
+          <PixelEgg
+            type={egg.id}
+            size={116}
+            className="hidden sm:block"
+          />
+        </div>
+
+        <span className="mt-5 text-[10px] tracking-[0.08em] text-ink-soft sm:text-[11px]">
+          {egg.label}
+        </span>
+      </div>
     </button>
   );
 }

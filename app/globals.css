@@ -3,9 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --cream: #f5e6c8;
-  --parchment: #f0e0b8;
+  --cream: #f3e6c8;
+  --parchment: #fff6df;
   --ink: #2a2118;
+  --ink-soft: #6c5a46;
+
+  --soft: #8dbf8a;
+  --jammy: #e8b84c;
+  --medium: #e9903d;
+  --hard: #d75b3f;
+
   --egg-yellow: #f5c542;
 }
 
@@ -21,7 +28,10 @@ body {
 }
 
 body {
-  background-color: var(--cream);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.35), transparent 24%),
+    radial-gradient(circle at 85% 75%, rgba(214, 171, 89, 0.08), transparent 28%),
+    var(--cream);
   color: var(--ink);
   font-family: "Press Start 2P", cursive;
   -webkit-font-smoothing: none;
@@ -29,42 +39,124 @@ body {
 }
 
 .paper-bg {
-  background-color: #f5e6c8;
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(232, 168, 56, 0.06) 0 1px, transparent 1px),
-    radial-gradient(circle at 80% 70%, rgba(42, 33, 24, 0.04) 0 1px, transparent 1px),
-    radial-gradient(circle at 40% 80%, rgba(232, 168, 56, 0.05) 0 1px, transparent 1px);
-  background-size: 24px 24px, 32px 32px, 18px 18px;
+  background-color: var(--cream);
 }
 
 :focus-visible {
   outline: 3px solid #e8a838;
-  outline-offset: 3px;
+  outline-offset: 4px;
 }
+
+/* ------------------------------------------------ */
+/* MAIN FRAME */
+/* ------------------------------------------------ */
+
+.frame {
+  position: relative;
+  border: 4px solid var(--ink);
+  background: rgba(255, 248, 229, 0.92);
+  box-shadow:
+    8px 8px 0 rgba(42, 33, 24, 0.14),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.frame::before,
+.frame::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+
+.frame::before {
+  top: 9px;
+  left: 9px;
+  border-top: 3px solid var(--ink);
+  border-left: 3px solid var(--ink);
+}
+
+.frame::after {
+  right: 9px;
+  bottom: 9px;
+  border-right: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+}
+
+/* ------------------------------------------------ */
+/* EGG CARDS */
+/* ------------------------------------------------ */
+
+.card-pixel {
+  position: relative;
+  border: 3px solid var(--ink);
+  background: #fff8e7;
+  box-shadow: 6px 6px 0 var(--ink);
+  cursor: pointer;
+  user-select: none;
+  transition:
+    transform 100ms steps(2),
+    box-shadow 100ms steps(2),
+    background-color 100ms;
+}
+
+.card-pixel:hover {
+  transform: translate(-2px, -3px);
+  box-shadow: 9px 10px 0 var(--ink);
+  background: #fffbea;
+}
+
+.card-pixel:active,
+.card-pixel.pressed {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+/* Header colors */
+
+.egg-tab-soft {
+  background: var(--soft);
+}
+
+.egg-tab-jammy {
+  background: var(--jammy);
+}
+
+.egg-tab-medium {
+  background: var(--medium);
+}
+
+.egg-tab-hard {
+  background: var(--hard);
+}
+
+/* ------------------------------------------------ */
+/* BUTTONS */
+/* ------------------------------------------------ */
 
 .btn-pixel {
   font-family: "Press Start 2P", cursive;
-  border: 3px solid #2a2118;
-  background: #f5e6c8;
-  color: #2a2118;
-  box-shadow: 3px 3px 0 0 #2a2118;
+  border: 3px solid var(--ink);
+  background: #fff8e7;
+  color: var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
   cursor: pointer;
+  user-select: none;
   transition:
     transform 80ms steps(2),
     box-shadow 80ms steps(2),
-    background-color 120ms;
-  user-select: none;
+    background-color 100ms;
 }
 
 .btn-pixel:hover {
   background: #f5c542;
-  transform: translateY(-2px);
-  box-shadow: 4px 5px 0 0 #2a2118;
+  transform: translate(-1px, -2px);
+  box-shadow: 6px 7px 0 var(--ink);
 }
 
 .btn-pixel:active {
-  transform: translateY(2px);
-  box-shadow: 1px 1px 0 0 #2a2118;
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink);
 }
 
 .btn-pixel-primary {
@@ -75,84 +167,41 @@ body {
   background: #e8a838;
 }
 
-.card-pixel {
-  border: 3px solid #2a2118;
-  background: #faf3e0;
-  box-shadow: 4px 4px 0 0 #2a2118;
-  transition:
-    transform 100ms steps(2),
-    box-shadow 100ms steps(2),
-    background-color 120ms;
-  cursor: pointer;
-  user-select: none;
-}
-
-.card-pixel:hover {
-  transform: translateY(-3px);
-  box-shadow: 6px 7px 0 0 #2a2118;
-  background: #fff4c4;
-}
-
-.card-pixel:active,
-.card-pixel.pressed {
-  transform: translateY(2px);
-  box-shadow: 1px 1px 0 0 #2a2118;
-  background: #f5c542;
-}
-
-.frame {
-  position: relative;
-  border: 3px solid #2a2118;
-  box-shadow: 6px 6px 0 0 rgba(42, 33, 24, 0.15);
-  background: #faf3e0;
-}
-
-.frame::before,
-.frame::after {
-  content: "";
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border: 2px solid #2a2118;
-  pointer-events: none;
-}
-
-.frame::before {
-  top: 6px;
-  left: 6px;
-  border-right: none;
-  border-bottom: none;
-}
-
-.frame::after {
-  bottom: 6px;
-  right: 6px;
-  border-left: none;
-  border-top: none;
-}
-
-.timer-digits {
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.08em;
-  line-height: 1;
-  text-shadow: 3px 3px 0 rgba(42, 33, 24, 0.12);
-}
+/* ------------------------------------------------ */
+/* DIVIDER */
+/* ------------------------------------------------ */
 
 .pixel-divider {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  color: #2a2118;
+  gap: 12px;
+  color: var(--ink);
 }
 
 .pixel-divider::before,
 .pixel-divider::after {
   content: "";
-  height: 2px;
-  width: 48px;
-  background: #2a2118;
+  height: 3px;
+  width: 72px;
+  background: var(--ink);
+  box-shadow: 2px 2px 0 rgba(42, 33, 24, 0.08);
 }
+
+/* ------------------------------------------------ */
+/* TIMER */
+/* ------------------------------------------------ */
+
+.timer-digits {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-shadow: 4px 4px 0 rgba(42, 33, 24, 0.12);
+}
+
+/* ------------------------------------------------ */
+/* SMALL DETAILS */
+/* ------------------------------------------------ */
 
 .sparkle {
   display: inline-block;
@@ -180,16 +229,33 @@ body {
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(4px);
   }
 
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
 @media (min-width: 640px) {
   .pixel-divider::before,
   .pixel-divider::after {
-    width: 80px;
+    width: 120px;
+  }
+}
+
+@media (max-width: 767px) {
+  .frame {
+    box-shadow: 5px 5px 0 rgba(42, 33, 24, 0.14);
+  }
+
+  .card-pixel {
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+
+  .pixel-divider::before,
+  .pixel-divider::after {
+    width: 48px;
   }
 }
